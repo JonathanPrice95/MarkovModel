@@ -1,9 +1,9 @@
 # MarkovModel
 Beer Model
 
-Front End: React.js, 
-Middle Tier: .Net Core/C#, 
-Back End: Microsoft SQL
+- Front End: React.js
+- Middle Tier: .Net Core/C#
+- Back End: Microsoft SQL
 
 # SUMMARY
 The Markov (Beer) Model contains a simple Markov Chain that predicts future populations (or inventories) based on the current amounts, transition probabilities, and growth (or loss).  Sample data used for this model is fictional and in no way, shape, or form is meant to model behavior for real products.  The following features were developed for this project:
