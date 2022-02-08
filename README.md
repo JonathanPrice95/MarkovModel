@@ -1,4 +1,4 @@
-# MarkovModel
+# MARKOV MODEL
 Beer Model
 
 - Front End: React.js
@@ -27,7 +27,7 @@ The main dashboard probabilities matrix automatically updates when the model is 
 - ManageModelModal.jsx as a Functional Component using Props and Hooks
 - MoreInfoModal.jsx as a Functional Component
 
-# JavaScript Files
+# JAVASCRIPT FILES
 - beerSchema.js using Yup
 - modelInstructions.js
 - beersService.js using AXIOS
