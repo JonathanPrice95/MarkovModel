@@ -6,11 +6,11 @@ Middle Tier: .Net Core/C#,
 Back End: Microsoft SQL
 
 # SUMMARY
-The Markov (Beer) Model contains a simple Markov Chain that predicts future populations (or inventories) based on the current amounts, transition probabilities, and growth (or loss).  Sample data used for this model is fictional and in no way, shape, or form is meant to model behavior for real products.  The following features were developed this project:
+The Markov (Beer) Model contains a simple Markov Chain that predicts future populations (or inventories) based on the current amounts, transition probabilities, and growth (or loss).  Sample data used for this model is fictional and in no way, shape, or form is meant to model behavior for real products.  The following features were developed for this project:
 
 A Model Dashboard that depicts the current model probability matrix, a chart of predicted future states (population or inventories), and user options to add their own data for modeling.  The Model comes with two pre-populated data sets which are read only.  However, the user may create and modify their own models with are stored in a SQL database by their UserId.
 
-A "More Info" Modal which provides more detailed instructions on how to use the model and data validations therein.  Data validation is done through a combination of Yup and author generated logic.
+A "More Info" Modal which provides detailed instructions on how to use the model and data validations therein.  Data validation is done through a combination of Yup and author generated logic.
 
 A Manage Model Modal which enables the user to add, delete, and modify their model (names).
 
