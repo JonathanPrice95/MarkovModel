@@ -8,13 +8,13 @@ Beer Model
 # SUMMARY
 The Markov (Beer) Model contains a simple Markov Chain that predicts future populations (or inventories) based on the current amounts, transition probabilities, and growth (or loss).  Sample data used for this model is fictional and in no way, shape, or form is meant to model behavior for real products.  The following features were developed for this project:
 
-A Model Dashboard that depicts the current model probability matrix, a chart of predicted future states (population or inventories), and user options to add their own data for modeling.  The Model comes with two pre-populated data sets which are read only.  However, the user may create and modify their own models which are stored in a SQL database by their UserId.
+A Model Dashboard depicts the current model probability matrix, a chart of predicted future states (population or inventories), and user options to add their own data for modeling.  The Model comes with two pre-populated data sets which are read only.  However, the user may create and modify their own models which are stored in a SQL database by their UserId.
 
-A "More Info" Modal which provides detailed instructions on how to use the model and data validations therein.  Data validation is done through a combination of Yup and author generated logic.
+A "More Info" Modal provides detailed instructions on how to use the model and data validations therein.  Data validation is done through a combination of Yup and author generated logic.
 
-A Manage Model Modal which enables the user to add, delete, and modify their model (names).
+A Manage Model Modal enables the user to add, delete, and modify their model (names).
 
-An Update Data Modal which allows the user to modify the product names, matrix size (3 - 6 products), change the transition probabilities, add growth (or loss), and determine the initial start states.
+An Update Data Modal allows the user to modify the product names, matrix size (3 - 6 products), change the transition probabilities, add growth (or loss), and determine the initial start states.
 
 The main dashboard probabilities matrix automatically updates when the model is saved (updated).  Upon clicking "run model", the chart of future states is updated using the open source MIT Chart feature.  Future states are predicted out to 1,000 cycles based on user input for maximum cycles and the steady state precision.  The defaults for these values are 20 cycles and 0.5% or less change between cycles for all products included in the probability matrix.
 
