@@ -19,28 +19,28 @@ An Update Data Modal which allows the user to modify the product names, matrix s
 The main dashboard probabilities matrix automatically updates when the model is saved (updated).  Upon clicking "run model", the chart of future states is updated using the open source MIT Chart feature.  Future states are predicted out to 1,000 cycles based on user input for maximum cycles and the steady state precision.  The defaults for these values are 20 cycles and 0.5% or less change between cycles for all products included in the probability matrix.
 
 # COMPONENTS
-BeerModel.jsx as a Class Component
-SingleBeer.jsx as a Function Component using Props
-BeerChart.jsx as a Functional Component imported from MIT's "react-apexcharts"
-BeerDataModal.jsx as a Functional Component using Props and Hooks
-BeerDataCard.jsx as a Function Component using Formik and Yup
-ManageModelModal.jsx as a Functional Component using Props and Hooks
-MoreInfoModal.jsx as a Functional Component
+- BeerModel.jsx as a Class Component
+- SingleBeer.jsx as a Function Component using Props
+- BeerChart.jsx as a Functional Component imported from MIT's "react-apexcharts"
+- BeerDataModal.jsx as a Functional Component using Props and Hooks
+- BeerDataCard.jsx as a Function Component using Formik and Yup
+- ManageModelModal.jsx as a Functional Component using Props and Hooks
+- MoreInfoModal.jsx as a Functional Component
 
 # JavaScript Files
-beerSchema.js using Yup
-modelInstructions.js
-beersService.js using AXIOS
+- beerSchema.js using Yup
+- modelInstructions.js
+- beersService.js using AXIOS
 
 # .NET
-Domains include Beer and BeerModel
-Requests include BeerUpdateRequest, BeersUpdateRequest, BeerModelAddRequest, and BeerModelUpdateRequest
-Service methods include BeersService and BeerModelsService
-Interfaces include IBeersService and IBeerModelsService
-Controller is BeerAPIController
-Simpletons are included in DependencyInjection
+- Domains include Beer and BeerModel
+- Requests include BeerUpdateRequest, BeersUpdateRequest, BeerModelAddRequest, and BeerModelUpdateRequest
+- Service methods include BeersService and BeerModelsService
+- Interfaces include IBeersService and IBeerModelsService
+- Controller is BeerAPIController
+- Simpletons are included in DependencyInjection
 
 # SQL
-Basic procedures for Adding, Deleting, Updating, and Selecting per proc names in .Net
-User Defined Tables and Temporary Data Tables are utilized for batch insert and updating the probability data 
-A User Defined Function is used to validate unique model names for each User Id
+- Basic procedures for Adding, Deleting, Updating, and Selecting per proc names in .Net
+- User Defined Tables and Temporary Data Tables are utilized for batch insert and updating the probability data 
+- A User Defined Function is used to validate unique model names for each User Id
