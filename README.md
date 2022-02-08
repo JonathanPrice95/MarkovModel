@@ -2,9 +2,7 @@
 Beer Model
 
 Front End: React.js
-
 Middle Tier: .Net Core/C#
-
 Back End: Microsoft SQL
 
 # SUMMARY
