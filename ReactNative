@@ -1,0 +1,309 @@
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Picker,
+  FlatList,
+  SectionList,
+  ActivityIndicator,
+  Modal,
+} from "react-native";
+import {
+  TouchableHighlight,
+  TouchableOpacity,
+  TextInput,
+  Keyboard,
+  Switch,
+  Button,
+} from "react-native-web";
+import Slider from "@react-native-community/slider";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 2,
+    backgroundColor: "#00ff00",
+    alignItems: "center",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    alignContent: "center",
+  },
+
+  containerImage: {
+    flex: 2,
+    backgroundColor: "#00ff00",
+    alignItems: "center",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    alignContent: "center",
+  },
+
+  containerTwo: {
+    flex: 1,
+    backgroundColor: "#ff0000",
+    alignItems: "center",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    alignContent: "center",
+    height: 50,
+  },
+
+  containerThree: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    alignContent: "space-between",
+    textAlign: "center",
+  },
+
+  containerFour: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+
+  input: {
+    flex: 2,
+    flexDirection: "column",
+    width: "50%",
+    height: 60,
+    borderColor: "green",
+    borderWidth: 2,
+    justifyContent: "center",
+  },
+
+  picker: {
+    flex: 3,
+    height: 60,
+    width: "100%",
+  },
+
+  slider: {
+    flex: 3,
+    width: "100%",
+    height: 100,
+  },
+
+  switch: {
+    flex: 2,
+    width: "100%",
+    height: 45,
+  },
+
+  flatListStyle: {
+    flex: 1,
+    width: "50%",
+    height: 60,
+    borderWidth: 1,
+    padding: 5,
+  },
+
+  sectionListStyle: {
+    flex: 1,
+    height: 60,
+    borderWidth: 1,
+    padding: 5,
+  },
+
+  sectionHeaderStyle: {
+    backgroundColor: "#e0e0e0",
+    fontWeight: "bold",
+  },
+});
+
+class App extends React.Component {
+  state = {
+    textInputValue: "",
+    keyboardStatus: "undefined",
+    pickerValue: 1,
+    sliderValue: 50,
+    switchValue: 0,
+    flatListData: [
+      {
+        key: 1,
+        text: "Jeff",
+      },
+      {
+        key: 2,
+        text: "Rick",
+      },
+      {
+        key: 3,
+        text: "Eric",
+      },
+      {
+        key: 4,
+        text: "Steve",
+      },
+      {
+        key: 5,
+        text: "Ryan",
+      },
+      {
+        key: 6,
+        text: "Gus",
+      },
+    ],
+    sectionListData: [
+      {
+        title: "Cities",
+        data: ["Camas", "Boise", "Grants Pass", "SpringField"],
+      },
+      {
+        title: "States",
+        data: ["Oregon", "Washington", "Idaho"],
+      },
+      {
+        title: "Countries",
+        data: ["USA", "Israel", "Greece"],
+      },
+    ],
+    animationStatus: 0,
+    modalStatus: 0,
+    datePickerDate: new Date(),
+    datePickerStatus: 0,
+  };
+
+  componentDidMount() {
+    console.log("Hello World Running");
+    this.keyboardDidShowSubscription = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        this.setState({ keyboardStatus: "Keyboard Shown" });
+      }
+    );
+    this.keyboardDidHideSubscription = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        this.setState({ keyboardStatus: "Keyboard Hidden" });
+      }
+    );
+  }
+
+  componentWillUnmount() {
+    this.keyboardDidShowSubscription.remove();
+    this.keyboardDidHideSubscription.remove();
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <TouchableOpacity
+          onPress={async () => {
+            console.log("Pressed!");
+            this.setState( {datePickerStatus : 1});
+          }}
+        >
+          <View style={styles.container}>
+            <Text>Open up App.js to start working on your app!</Text>
+            <Text>Hello, World!</Text>
+            <StatusBar style="auto" />
+          </View>
+        </TouchableOpacity>
+        <Image
+          style={styles.containerImage}
+          source={require("./profilephoto.png")}
+        />
+        <View style={styles.containerThree}>
+          <TextInput
+            value={this.state.textInputValue}
+            style={styles.input}
+            autoCorrect={"true"}
+            autoCapitalize={"characters"}
+            maxLength={10}
+            onSubmitEditing={Keyboard.dismiss}
+            onChangeText={(textInputValue) => this.setState({ textInputValue })}
+          />
+          <Text style={styles.input}>{this.state.keyboardStatus}</Text>
+        </View>
+        <View style={styles.containerFour}>
+          <View style={styles.containerThree}>
+            <Picker
+              selectedValue={this.state.pickerValue}
+              mode={0}
+              style={styles.picker}
+              onValueChange={(inValue, inIndex) =>
+                this.setState({ pickerValue: inValue })
+              }
+            >
+              <Picker.Item label="Jon" value={1} />
+              <Picker.Item label="Jeff" value={2} />
+              <Picker.Item label="Rick" value={3} />
+            </Picker>
+            <Switch
+              style={styles.switch}
+              value={this.state.switchValue}
+              onValueChange={(inValue) =>
+                this.setState({ switchValue: inValue })
+              }
+            />
+          </View>
+          <View style={styles.containerThree}>
+            <ActivityIndicator size="large" color="#ff0000" animating={this.state.animationStatus} />
+            <FlatList
+              style={styles.flatListStyle}
+              data={this.state.flatListData}
+              renderItem={({ item }) => <Text>{item.text}</Text>}
+            />
+            <SectionList
+              style={styles.sectionListStyle}
+              renderItem={({ item, index, section }) => (
+                <Text key={index}>{item}</Text>
+              )}
+              renderSectionHeader={({ section: { title } }) => (
+                <Text style={styles.sectionHeaderStyle}>{title}</Text>
+              )}
+              sections={this.state.sectionListData}
+              keyExtractor={(inItem, inIndex) => inItem + inIndex}
+            />
+          </View>
+        </View>
+        <View style={styles.containerTwo}>
+          <TouchableHighlight
+            onPress={() => {
+              console.log("Pressed!");
+              this.setState({modalStatus: !this.state.modalStatus})
+            }}
+          >
+            <Text>Hello, World Again!</Text>
+          </TouchableHighlight>
+          <Slider
+            style={styles.slider}
+            step={1}
+            minimumValue={0}
+            maximumValue={100}
+            value={this.state.sliderValue}
+            onValueChange={(inValue) => this.setState({ sliderValue: inValue })}
+          />
+          <Button
+            title="Press Here"
+            color="green"
+            onPress={() => {console.log("Button Pressed"); this.setState({animationStatus: !this.state.animationStatus})}}
+          />
+          <Modal animationType="fade" transparent={ false }
+            visible={this.state.modalStatus} presentationStyle="formSheet"
+            onRequestClose={ () => { console.log("onRequestClose"); } }
+          >
+            <View style={{ marginTop : 100, flex : 1, alignItems : "center" }}>
+              <View style={{ flex : 1, alignItems : "center" }}>
+                <Text>I am a modal. Ain't I cool??</Text>
+                <TouchableHighlight style={{ marginTop : 100 }}
+                  onPress={() => { this.setState({ modalStatus : false }); }}
+                >
+                  <Text>Tap me to hide modal</Text>
+                </TouchableHighlight>
+              </View>
+            </View>
+          </Modal>
+          <StatusBar style="auto" />
+        </View>
+      </React.Fragment>
+    );
+  }
+}
+
+export default App;
